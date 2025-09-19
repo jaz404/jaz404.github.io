@@ -1,6 +1,6 @@
-title: "Blog Title"
-author: "Blog Author"
-description: "My blog"
+title: "Jaspreet Chhabra"
+author: "Jaspreet Chhabra"
+description: "Portfolio"
 permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
