@@ -1,87 +1,79 @@
 ---
-title: "About"
+title: "Maker Portfolio"
 permalink: "/about/"
 layout: page
 ---
 
-## Github Pages
+## Introduction
+Hello! Welcome to my maker portfolio.  
 
-Just fork this [repository](https://github.com/niklasbuschmann/contrast) to `your_username.github.io` and adjust the `_config.yml` to use with [Github Pages](https://pages.github.com/) and your page is done.
+Ever since I was a kid, I’ve been fascinated by how things worked—especially **electronics and robotics**. My journey began in **Grade 6**, when I joined my school’s electronics lab and started experimenting with simple circuits. That curiosity quickly grew into building robots and competing in national and international competitions.
 
-## Features
+---
 
- - dark mode
- - [KaTeX](https://katex.org) included
- - no external ressources
- - optional sidebar
- - archive page
- - syntax highlighting
- - supports comments via [disqus](https://disqus.com/) or [isso](http://posativ.org/isso/)
+## Early Robotics: Lego Differential Drives
+My first real exposure to robotics came through **Lego-based differential drive robots**, which I built and competed with in the **RoboCup Rescue Line competition in India**.
 
-## Installation
+![Lego Robot Early Version](path/to/image1.jpg)
 
-To run locally [install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and then run:
+### First Iterations
+The initial robot was simple:  
+- An on/off switch with **two light sensors** to follow a line.  
 
-```
-git clone https://github.com/niklasbuschmann/contrast.git
-cd contrast
-gem install bundler jekyll jekyll-feed
-bundle exec jekyll serve
-```
+### Competition Requirements
+The task expected us to design a robot that could:  
+- Follow a black line on a white surface.  
+- Avoid obstacles and climb ramps.  
+- Navigate hurdles.  
+- Rescue victims (plastic balls) and deposit them in the designated zone.  
 
-## Config
+![Competition Course](path/to/image2.jpg)
 
-Your `_config.yml` could for example look like this:
+### Progression
+Over time, I learned about **control loops** and applied **PID controllers** to make the robot more reliable.  
+- Our final Lego robot placed **2nd nationally**.  
+- We received the **Best Technical Skills Award**.  
+- We qualified for the **Asia-Pacific RoboCup in Moscow**.  
 
-```yaml
-title: "Blog Title"
-author: "Blog Author"
-description: "My blog"
-permalink: /:title/
-lang: "en"
-excerpt_separator: "\n\n\n"
-date_format: "%B %d, %Y"
+![National Competition](path/to/image3.jpg)
 
-# Layout
+---
 
-show_excerpts: true             # show article excerpts instead of archive list on the home page
-show_frame: true                # display a grey frame on large screens
-show_sidebar: false             # show a sidebar instead of the usual header
-show_minimal: false             # remove all clutter
+## Transition to Open Source: Arduino Robots
+By **Grade 11**, we realized Lego systems were limiting. We transitioned to **Arduino-based designs** with custom electronics and mechanics.
 
-# Menu                          # for available icons see https://fontawesome.com/v5/icons/
+![Arduino Robot](path/to/image4.jpg)
 
-navigation:                     # accepts {file, title, url, icon, sidebaricon}
-  - {file: "archive.html", sidebaricon: home}
-  - {file: "README.md", sidebaricon: address-card}
+### Design Highlights
+- **3D-printed chassis** with a 4-wheeled differential drive.  
+- **PID control** for smooth and precise line following.  
+- **7 IR sensors** to detect line position.  
+- **Color sensors** to identify green rescue markers.  
+- **Ultrasonic sensors** for obstacle and hurdle detection.  
+- **Dual microcontrollers**: Arduino Mega (main logic) + Arduino Nano (sensor handling).  
+- Retained **Lego motors** for the lifting mechanism due to their torque.  
 
-external:                       # accepts {file, title, url, icon, sidebaricon}
-  - {title: Mail, icon: envelope, url: "mailto:author@example.com"}
-  - {title: Github, icon: github, url: "https://github.com/"}
-  - {title: Subscribe, icon: rss, url: "/feed.xml"}
+### Rescue System
+We designed a **basket with tactile switches** that:  
+- Detected when the robot entered the rescue zone.  
+- Controlled motor rotations to drop victims with precision.  
 
-comments:
-#  disqus_shortname: ""         # see https://disqus.com
-#  isso_domain: ""              # see https://isso-comments.de
+![Workspace](path/to/image5.jpg)
 
-plugins:
- - jekyll-feed
-```
+---
 
-## Math
+## High School Combat Robotics
+In addition to rescue robots, I also explored **combat robotics** during high school.  
 
-Contrast comes preinstalled with a leightweight alternative to MathJax called [KaTeX](https://katex.org/). To display equations in a post simply set `mathjax: true` in the article's front matter. [Jektex](https://github.com/yagarea/jektex) can be used to pre-render math on the server side.
+![Combat Robot 1](path/to/robot1.jpg)
+![Combat Robot 2](path/to/robot2.jpg)
 
-## License
+### Achievements
+- Designed and built wedge-based combat robots.  
+- Won multiple **high school and university-level competitions**.  
+- Secured **1st place at Technoxian**, one of India’s biggest war robotics competitions.  
 
-[public domain](http://unlicense.org/)
+---
 
-## Screenshots
 
-![screenshot](https://github.com/user-attachments/assets/8f0ef4bc-f079-495e-8c31-5867b8ccd25c)
 
-![screenshot](https://github.com/user-attachments/assets/e5e6d189-3251-41f4-baba-ff42be65f666)
-
-![screenshot](https://github.com/user-attachments/assets/d31879ae-7113-42be-b580-1e96a2aedd29)
-
-![screenshot](https://github.com/user-attachments/assets/d524ce47-8d8c-473e-afc6-79b34fae63e8)
