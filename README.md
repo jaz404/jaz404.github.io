@@ -5,11 +5,10 @@ layout: page
 ---
 
 ## Introduction
+
 Hello! Welcome to my maker portfolio.  
 
 Ever since I was a kid, I’ve been fascinated by how things worked—especially **electronics and robotics**. My journey began in **Grade 6**, when I joined my school’s electronics lab and started experimenting with simple circuits. That curiosity quickly grew into building robots and competing in national and international competitions.
-
----
 
 ## Early Robotics: Lego Differential Drives
 My first real exposure to robotics came through **Lego-based differential drive robots**, which I built and competed with in the **RoboCup Rescue Line competition in India**.
@@ -37,7 +36,6 @@ Over time, I learned about **control loops** and applied **PID controllers** to 
 
 ![National Competition](path/to/image3.jpg)
 
----
 
 ## Transition to Open Source: Arduino Robots
 By **Grade 11**, we realized Lego systems were limiting. We transitioned to **Arduino-based designs** with custom electronics and mechanics.
@@ -60,7 +58,6 @@ We designed a **basket with tactile switches** that:
 
 ![Workspace](path/to/image5.jpg)
 
----
 
 ## High School Combat Robotics
 In addition to rescue robots, I also explored **combat robotics** during high school.  
@@ -71,9 +68,33 @@ In addition to rescue robots, I also explored **combat robotics** during high sc
 ### Achievements
 - Designed and built wedge-based combat robots.  
 - Won multiple **high school and university-level competitions**.  
-- Secured **1st place at Technoxian**, one of India’s biggest war robotics competitions.  
+- Secured **1st place at Technoxian**, one of India’s biggest war robotics competitions.
 
----
+## Other projects (high school)
+wood working speaker cabinets (my first attempt at working with wood (mdf))
+
+other arduino based projects: home automation (relay/ble based) 3*3*3 led matrix 
+
+university life:
+
+More recently I have deweled deeper into embedded electronics and working with stm32 nucleo boards in my spare time 
+designing pcbs for the electrical team 
+Designing a **CAN bus network** with STM32 microcontrollers to coordinate subsystems.  
+  - Subsystems include **drive**, **braking**, **lights**, **relays**, and **communications**.
+(images of the subsystem boards)
+these boards are designed as an expansion to the nucleo boards
+work can be seen using this link (repo)
+here are some of the stm32 drivers written from sractch(in progress, link)
+(images)
+utilized  raspberry pi as the onboard computer which would recieve commands from LoRa 
+base station also utlizes a raspberrpi running a qt based GUI
+(images)
+what i am working on now
+working on interfacing a newly acquired PMSM motor with our current systems
+electromagnetic braking systems
+(images)
+
+
 
 
 
