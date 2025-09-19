@@ -7,6 +7,7 @@ layout: page
 ## Introduction
 
 Hello! Welcome to my maker portfolio.  
+![QA Approved](assets/images/20250307_213647.jpg)
 
 Ever since I was a kid, I’ve been fascinated by how things worked—especially **electronics and robotics**. My journey began in **Grade 6**, when I joined my school’s electronics lab and started experimenting with simple circuits. That curiosity quickly grew into building robots and competing in national and international competitions.
 
