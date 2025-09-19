@@ -7,8 +7,9 @@ layout: page
 ## Introduction
 
 Hello! Welcome to my maker portfolio.  
-<img src="assets/images/20250307_213647.jpg" alt="QA Approved" width="300">
-
+<img src="{{ site.baseurl }}/assets/images/20250307_213647.jpg" alt="QA Approved" width="300">
+<img src="/assets/images/20250307_213647.jpg" alt="QA Approved" width="300">
+![](/assets/images/20250307_213647.jpg){: width="300"}
 Ever since I was a kid, I’ve been fascinated by how things worked—especially **electronics and robotics**. My journey began in **Grade 6**, when I joined my school’s electronics lab and started experimenting with simple circuits. That curiosity quickly grew into building robots and competing in national and international competitions.
 
 ## Early Robotics: Lego Differential Drives
