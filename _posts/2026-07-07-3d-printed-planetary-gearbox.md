@@ -56,6 +56,7 @@ The gearbox was initially tested using an **Arduino Uno** and a **TMC2209** step
 > **Arduino Test Program**
 >
 > ```cpp
+> // Source: https://circuitdigest.com/microcontroller-projects/interfacing-TMC2209-stepper-motor-driver-with-arduino-uno-basic-direction-and-stepping-control
 > // Pin Definitions
 > #define EN_PIN 8    // LOW: Driver enabled, HIGH: Driver disabled
 > #define STEP_PIN 9  // Step on the rising edge
