@@ -21,7 +21,7 @@ The completed gearbox mounted to a NEMA 17 stepper motor. The housing is split i
 
 ![Gear Train](/assets/planetary-gearbox/img5.jpg)
 
-Close-up of the two-stage planetary reduction. Each stage provides a **4:1** reduction, resulting in an overall **16:1** gearbox. The sun and planet gears each have **15 teeth**, while the ring gear has **45 internal teeth**. All gears use a **15° helix angle**, **22° pressure angle**, **module 1.5**, and **0.2 mm backlash**, selected through multiple print iterations to achieve smooth gear meshing.
+Close-up of the two-stage planetary reduction. Each stage provides a 4:1 reduction, resulting in an overall 16:1 gearbox. The sun and planet gears each have 15 teeth, while the ring gear has 45 internal teeth. All gears use a 15° helix angle, 22° pressure angle, module 1.5, and 0.2 mm backlash, selected through multiple print iterations to achieve smooth gear meshing.
 
 ---
 
@@ -51,7 +51,7 @@ Exploded CAD model showing the complete drivetrain, including the housing, plane
 
 Motor test setup
 
-The gearbox was initially tested using an **Arduino Uno** and a **TMC2209** stepper driver operating from a bench power supply set to 12V. The test firmware generates STEP and DIR signals directly from the Arduino to verify gearbox operation.
+The gearbox was initially tested using an Arduino Uno and a TMC2209 stepper driver operating from a bench power supply set to 12V. The test firmware generates STEP and DIR signals directly from the Arduino to verify gearbox operation.
 
 > **Arduino Test Program**
 >
