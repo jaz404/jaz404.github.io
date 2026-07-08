@@ -2,10 +2,10 @@
 layout: post
 title: 16:1 Planetary Gearbox
 image: /assets/planetary-gearbox/exploded-view-3.png
-summary: A two-stage 16:1 planetary gearbox designed for NEMA 17 stepper motors, featuring a fully 3D-printed transmission optimized for FDM manufacturing with 0.2 mm backlash. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. The next stage of the project is integrating a magnetic encoder to enable closed-loop PID position control.
+summary: A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. The next stage of the project is integrating a magnetic encoder to enable closed-loop PID position control.
 ---
 
-A two-stage 16:1 planetary gearbox designed for NEMA 17 stepper motors, featuring a fully 3D-printed transmission optimized for FDM manufacturing with 0.2 mm backlash. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. 
+A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. 
 
 Ongoing work: This project is still under active development. Future updates will cover the integration of a magnetic encoder for closed-loop PID position control, gearbox performance and efficiency characterization, torque testing under different loads, and the overall design process behind the encoder integration and control system. Till then, here are some images of the project!
 
