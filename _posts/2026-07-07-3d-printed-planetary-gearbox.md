@@ -17,16 +17,8 @@ Final assembled gearbox mounted to the NEMA 17 motor.
 
 ---
 
-![Prototype](/assets/planetary-gearbox/img2.png)
-
-Close-up of the two stages
-
 ![Prototype](/assets/planetary-gearbox/img5.jpg)
-
----
-
-![Prototype](/assets/planetary-gearbox/img4.jpg)
-
+Close-up of the two stages
 
 ---
 
@@ -34,33 +26,10 @@ Close-up of the two stages
 
 ---
 
-![Prototype](/assets/planetary-gearbox/img3.jpg)
-
-
----
-
 ![Prototype](/assets/planetary-gearbox/img6.jpg)
 
----
 
-![CAD Assembly](/assets/planetary-gearbox/fusion-image-1.png)
-
----
-
-![Section View](/assets/planetary-gearbox/fusion-image-2.png)
-
----
-
-# Exploded Views
-
-![Exploded View](/assets/planetary-gearbox/exploded-view.png)
-
----
-
-![Exploded View](/assets/planetary-gearbox/exploded-view-2.png)
-
-
----
+# Exploded View
 
 ![Exploded View](/assets/planetary-gearbox/exploded-view-3.png)
 
