@@ -1,6 +1,6 @@
 # Setup
 title:               Jaspreet Chhabra
-tagline:             'Project Showcase'
+# tagline:             'Project Showcase'
 description:         'MSc Robotics student at the University of Alberta'
 baseurl:             ''
 paginate:            5
