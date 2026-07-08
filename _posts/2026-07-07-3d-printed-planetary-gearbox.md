@@ -2,10 +2,10 @@
 layout: post
 title: 16:1 Planetary Gearbox
 image: /assets/planetary-gearbox/exploded-view-3.png
-summary: A 16:1 planetary gearbox designed for NEMA 17 stepper motors
+summary: A two stage 16:1 planetary gearbox designed for NEMA 17 stepper motors
 ---
 
-This project involved designing and building a two stage **16:1 planetary gearbox** for a **NEMA 17 stepper motor**. The goal was to create a reduction gearbox that could be created entirely using 3D printing. I plan on using this later for my stepper motor based robotic arm. 
+A two-stage 16:1 planetary gearbox designed for a NEMA 17 stepper motor. The gearbox was developed as part of a custom robotic arm, with the objective of creating a compact, fully 3D-printable reduction drive with low backlash and straightforward assembly.
 
 ---
 
@@ -17,7 +17,7 @@ Final assembled gearbox mounted to the NEMA 17 motor.
 
 ---
 
-![Prototype](/assets/planetary-gearbox/img2.jpg)
+![Prototype](/assets/planetary-gearbox/img2.png)
 
 Close-up of the two stages
 
