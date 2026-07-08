@@ -34,6 +34,7 @@ Brass heat-set inserts are used throughout the housing to provide durable thread
 ![Housing Assembly](/assets/planetary-gearbox/img6.jpg)
 
 The stacked planet carrier assembly. Each carrier uses hardened dowel pins as planet shafts together with sleeve bearings to reduce friction and provide smooth rotation under load.
+
 ---
 
 # Exploded View
