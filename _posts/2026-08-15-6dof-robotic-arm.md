@@ -8,9 +8,9 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
 <style>
 .project-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin: 1rem 0 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 1.5rem 0 2.5rem;
 }
 
 .project-gallery img {
@@ -20,12 +20,19 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
   border-radius: 8px;
 }
 
+/* Stack images on smaller screens */
+@media (max-width: 700px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
 .video-wrap {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  margin: 1rem 0 2rem;
+  margin: 1.5rem 0 2.5rem;
 }
 
 .video-wrap iframe {
@@ -42,7 +49,7 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
 <div class="project-gallery">
   <img src="/assets/3d-printed-arm/elbow-3.jpg" alt="3D printed arm overview">
   <img src="/assets/3d-printed-arm/gearbox-3.jpg" alt="Gearbox">
-  <img src="/assets/3d-printed-arm/shoulder-3.jpg" alt="Shoulder assembly">
+  <img src="/assets/3d-printed-arm/shoulder-2.jpg" alt="Shoulder assembly">
   <img src="/assets/3d-printed-arm/a-very-rough-sketch.jpg" alt="Rough sketch of the arm">
 </div>
 
@@ -115,5 +122,4 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
   <img src="/assets/3d-printed-arm/elbow-1.jpg" alt="Elbow 1">
   <img src="/assets/3d-printed-arm/elbow-2.jpg" alt="Elbow 2">
   <img src="/assets/3d-printed-arm/elbow-3.jpg" alt="Elbow 3">
-  <img src="/assets/3d-printed-arm/elbow-4.jpg" alt="Elbow 4">
 </div>
