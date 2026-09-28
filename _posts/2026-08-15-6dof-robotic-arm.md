@@ -48,8 +48,8 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
 
 <div class="project-gallery">
   <img src="/assets/3d-printed-arm/elbow-3.jpg" alt="3D printed arm overview">
-  <img src="/assets/3d-printed-arm/gearbox-3.jpg" alt="Gearbox">
   <img src="/assets/3d-printed-arm/shoulder-2.jpg" alt="Shoulder assembly">
+  <img src="/assets/3d-printed-arm/gearbox-3.jpg" alt="Gearbox">
   <img src="/assets/3d-printed-arm/a-very-rough-sketch.jpg" alt="Rough sketch of the arm">
 </div>
 
