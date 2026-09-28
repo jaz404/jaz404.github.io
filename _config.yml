@@ -1,14 +1,14 @@
 # Setup
-title:               Jaspreet Chhabra
-# tagline:             'Project Showcase'
-description:         'MSc Robotics student at the University of Alberta'
+title:               Jaspreet Singh Chhabra
+tagline:             'Project Showcase'
+description:         'MSc Computing Science (Robotics) at the University of Alberta'
 baseurl:             ''
 paginate:            5
 permalink:           pretty
 
 # About/contact
 author:
-  name:              Jaspreet Chhabra
+  name:              Jaspreet Singh Chhabra
   email:             chhabrajaspreet14@gmail.com
 
 # Gems

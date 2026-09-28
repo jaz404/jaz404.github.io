@@ -2,16 +2,16 @@
 layout: post
 title: 16:1 Planetary Gearbox
 image: /assets/planetary-gearbox/exploded-view-3.png
-summary: A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. The next stage of the project is integrating a magnetic encoder to enable closed-loop PID position control.
+summary: A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors.
 ---
 
 A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. 
 
-Ongoing work: This project is still under active development. Future updates will cover the integration of a magnetic encoder for closed-loop PID position control, gearbox performance and efficiency characterization, torque testing under different loads, and the overall design process behind the encoder integration and control system. Till then, here are some images of the project!
+Ongoing work: This project is still under active development. Future updates will cover the integration of a magnetic encoder for closed-loop position control, gearbox performance and efficiency characterization, torque testing under different loads, and the overall design process behind the encoder integration and control system. Till then, here are some images of the project!
 
 ---
 
-# Final Prototype
+# Prototype
 
 ![Final Prototype](/assets/planetary-gearbox/img1.jpg)
 
@@ -44,7 +44,7 @@ The stacked planet carrier assembly. Each carrier uses hardened dowel pins as pl
 Exploded CAD model showing the complete drivetrain, including the housing, planet carriers, gear train, bearings, fasteners, and motor.
 
 ---
-
+<!-- 
 # Schematic
 
 ![Schematic](/assets/planetary-gearbox/basic-schematic.png)
@@ -90,4 +90,4 @@ The gearbox was initially tested using an Arduino Uno and a TMC2209 stepper driv
 >     delayMicroseconds(microSecondsDelay);
 >   }
 > }
-> ```
+> ``` -->
