@@ -4,12 +4,11 @@ title: 3D Printed Robotic Arm
 image: /assets/3d-printed-arm/elbow-3.jpg
 summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)! 
 ---
-<!-- 
 <style>
 .project-gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   margin: 1.5rem 0 2.5rem;
 }
 
@@ -18,13 +17,6 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
   height: auto;
   display: block;
   border-radius: 8px;
-}
-
-/* Stack images on smaller screens */
-@media (max-width: 700px) {
-  .project-gallery {
-    grid-template-columns: 1fr;
-  }
 }
 
 .video-wrap {
@@ -42,8 +34,7 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
   width: 100%;
   height: 100%;
 }
-</style> -->
-
+</style>
 ## Intro
 
 <div class="project-gallery">
