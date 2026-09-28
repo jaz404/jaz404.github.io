@@ -4,7 +4,37 @@ title: 16:1 Planetary Gearbox
 image: /assets/planetary-gearbox/exploded-view-3.png
 summary: A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors.
 ---
+<style>
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 1.5rem 0 2.5rem;
+}
 
+.project-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
 A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motors. The prototype was driven using an Arduino and TMC2209 stepper driver at 12 V, with a typical current draw of approximately 0.5 A during testing. 
 
 ---
@@ -16,6 +46,16 @@ A two-stage 16:1 planetary 3D printed gearbox designed for NEMA 17 stepper motor
 The completed gearbox mounted to a NEMA 17 stepper motor. The housing is split into two sections, with each section containing one internally toothed ring gear, allowing the two planetary stages to be packaged into a assembly while simplifying printing and assembly.
 
 ---
+
+<div class="video-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/SmnXMEgoI9o"
+    title="Some precision testing!"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
+
 
 ![Gear Train](/assets/planetary-gearbox/img5.jpg)
 
