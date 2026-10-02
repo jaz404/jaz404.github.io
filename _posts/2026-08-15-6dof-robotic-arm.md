@@ -35,7 +35,6 @@ summary: a work in progress 3d printed robotic arm (hopefully 7 DoF)!
   height: 100%;
 }
 </style>
-## Intro
 
 <div class="project-gallery">
   <img src="/assets/3d-printed-arm/elbow-3.jpg" alt="3D printed arm overview">
