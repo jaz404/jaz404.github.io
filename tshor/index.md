@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: standalone
+title: TSHOR
 permalink: /tshor/
-nav_exclude: true
 ---
 
 # TSHOR
