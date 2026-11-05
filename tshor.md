@@ -2,6 +2,7 @@
 layout: page
 title: TSHOR
 permalink: /tshor/
+nav_exclude: true
 ---
 
 # TSHOR
