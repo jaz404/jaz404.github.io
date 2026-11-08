@@ -1,3 +1,4 @@
+
 ---
 layout: default
 title: Home
@@ -5,12 +6,28 @@ title: Home
 
 <h1>Projects</h1>
 
+<!-- <div class="project-grid">
+  {% for post in paginator.posts %} -->
+  {% capture post_order %}
+  {%- for post in site.posts -%}
+    {%- assign effective_date = post.last_updated | default: post.date | date: "%Y-%m-%d" -%}
+    {{- effective_date -}}|{{- post.url -}};;
+  {%- endfor -%}
+{% endcapture %}
+
+{% assign sorted_entries = post_order | split: ";;" | sort | reverse %}
+
 <div class="project-grid">
-  {% for post in paginator.posts %}
+  {% for entry in sorted_entries %}
+    {% assign parts = entry | split: "|" %}
+    {% assign post = site.posts | where: "url", parts[1] | first %}
+    
+    {% assign project_url = post.external_url | default: post.url %}
+
     <div class="project-card">
 
       <h2>
-        <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+        <a href="{{ project_url | relative_url }}">{{ post.title }}</a>
       </h2>
 
       <div class="project-dates">
@@ -21,10 +38,24 @@ title: Home
         {% endif %}
       </div>
 
-      {% if post.image %}
-        <a href="{{ post.url | absolute_url }}">
+      {% if post.video %}
+        <a href="{{ project_url | relative_url }}">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            class="project-image"
+            style="display: block; width: 100%; height: auto; border-radius: 5px; pointer-events: none;"
+          >
+            <source src="{{ post.video | relative_url }}" type="video/mp4">
+          </video>
+        </a>
+      {% elsif post.image %}
+        <a href="{{ project_url | relative_url }}">
           <img
-            src="{{ post.image | absolute_url }}"
+            src="{{ post.image | relative_url }}"
             alt="{{ post.title }}"
             class="project-image"
           >
@@ -37,7 +68,7 @@ title: Home
         <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
       {% endif %}
 
-      <a href="{{ post.url | absolute_url }}">More info</a>
+      <a href="{{ project_url | relative_url }}">More info</a>
 
     </div>
   {% endfor %}
