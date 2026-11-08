@@ -3,9 +3,13 @@ layout: post
 title: 3D Printed Robotic Arm
 date: 2026-08-15
 last_updated: 2026-11-07
-image: /assets/3d-printed-arm/elbow-3.jpg
+image: /assets/3d-printed-arm/update-2026-11-07/compressed_1/full-4.jpg
 summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ---
+
+![Full Arm 4](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-4.jpg)
+
+![Full Arm 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-2.jpg)
 
 ![3D printed arm overview](/assets/3d-printed-arm/elbow-3.jpg)
 
@@ -15,7 +19,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Rough sketch of the arm](/assets/3d-printed-arm/a-very-rough-sketch.jpg)
 
-## Gearbox
+## Shoulder
+
+![Shoulder stage 1 - 1](/assets/3d-printed-arm/shoulder-stage1-1.jpg)
+
+![Shoulder stage 1 - 2](/assets/3d-printed-arm/shoulder-stage1-2.jpg)
 
 ![Gearbox 1](/assets/3d-printed-arm/gearbox-1.jpg)
 
@@ -25,35 +33,22 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Gearbox 4](/assets/3d-printed-arm/gearbox-4.jpg)
 
-## Shoulder Stage 1
-
-![Shoulder stage 1 - 1](/assets/3d-printed-arm/shoulder-stage1-1.jpg)
-
-![Shoulder stage 1 - 2](/assets/3d-printed-arm/shoulder-stage1-2.jpg)
-
-## Shoulder Stage 1 Progress
-
 ![Shoulder stage 1 progress - 1](/assets/3d-printed-arm/shoulder-stage1-progress-initial-1.jpg)
 
 ![Shoulder stage 1 progress - 2](/assets/3d-printed-arm/shoulder-stage1-progress-initial-2.jpg)
 
-## Shoulder Stage 2
-
 ![Shoulder stage 2 - 1](/assets/3d-printed-arm/shoulder-stage2-1.jpg)
 
-## Shoulder Side Views
 
 ![Shoulder side 1](/assets/3d-printed-arm/shoulder-side-1.jpg)
 
 ![Shoulder side 2, even the bearings are 3D printed!](/assets/3d-printed-arm/shoulder-side-2.jpg)
 
-## Shoulder
-
 ![Shoulder 1](/assets/3d-printed-arm/shoulder-1.jpg)
 
 ![Shoulder 2](/assets/3d-printed-arm/shoulder-2.jpg)
 
-## Control and Test Circuit
+## Test Circuit
 
 ![Control board 1](/assets/3d-printed-arm/control-board-1.jpg)
 
@@ -61,7 +56,7 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Wire braiding](/assets/3d-printed-arm/my-wire-braiding-skills.jpg)
 
-## Shoulder Demo Video
+## Shoulder Test!
 
 <div class="video-wrap">
   <iframe
@@ -82,7 +77,7 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Upper Arm 3](/assets/3d-printed-arm/elbow-3.jpg)
 
-![Upper Arm Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/upper-arm.gif)
+![Upper Arm Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/upper-arm-gif.gif)
 
 ## Elbow
 
@@ -90,7 +85,7 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Elbow 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-2.jpg)
 
-![Elbow Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow.gif)
+![Elbow Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-gif.gif)
 
 ![Elbow 3](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-3.jpg)
 
