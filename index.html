@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Home
@@ -6,9 +5,7 @@ title: Home
 
 <h1>Projects</h1>
 
-<!-- <div class="project-grid">
-  {% for post in paginator.posts %} -->
-  {% capture post_order %}
+{% capture post_order %}
   {%- for post in site.posts -%}
     {%- assign effective_date = post.last_updated | default: post.date | date: "%Y-%m-%d" -%}
     {{- effective_date -}}|{{- post.url -}};;
@@ -21,7 +18,6 @@ title: Home
   {% for entry in sorted_entries %}
     {% assign parts = entry | split: "|" %}
     {% assign post = site.posts | where: "url", parts[1] | first %}
-    
     {% assign project_url = post.external_url | default: post.url %}
 
     <div class="project-card">
