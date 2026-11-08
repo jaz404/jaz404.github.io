@@ -3,7 +3,7 @@ layout: post
 title: 3D Printed Robotic Arm
 date: 2026-08-15
 last_updated: 2026-11-07
-image: /assets/3d-printed-arm/update-2026-11-07/compressed_1/full-4.jpg
+image: /assets/3d-printed-arm/update-2026-11-07/compressed_1/full-3.jpg
 summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ---
 
