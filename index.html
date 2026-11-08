@@ -8,16 +8,28 @@ title: Home
 <div class="project-grid">
   {% for post in paginator.posts %}
     <div class="project-card">
+
       <h2>
         <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
       </h2>
+
+      <div class="project-dates">
+        <span>Published: {{ post.date | date: "%-d %b %Y" }}</span>
+
+        {% if post.last_updated %}
+          <span>Last updated: {{ post.last_updated | date: "%-d %b %Y" }}</span>
+        {% endif %}
+      </div>
+
       {% if post.image %}
         <a href="{{ post.url | absolute_url }}">
-          <img src="{{ post.image | absolute_url }}" alt="{{ post.title }}">
+          <img
+            src="{{ post.image | absolute_url }}"
+            alt="{{ post.title }}"
+            class="project-image"
+          >
         </a>
       {% endif %}
-
-
 
       {% if post.summary %}
         <p>{{ post.summary }}</p>
@@ -26,6 +38,7 @@ title: Home
       {% endif %}
 
       <a href="{{ post.url | absolute_url }}">More info</a>
+
     </div>
   {% endfor %}
 </div>
