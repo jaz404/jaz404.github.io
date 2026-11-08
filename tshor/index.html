@@ -1,0 +1,158 @@
+---
+layout: null
+permalink: /tshor/
+---
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="TSHOR is a cable-driven haptic trigger interface for robotic gripper teleoperation. Design, implementation and experimental force characterization." name="description"/>
+<meta content="TSHOR — Cable-Driven Haptic Trigger" property="og:title"/>
+<meta content="Design and evaluation of a cable-driven haptic trigger for robotic gripper teleoperation." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="{{ '/tshor/assets/poster.jpg' | absolute_url }}" property="og:image"/>
+<title>TSHOR — Cable-Driven Haptic Trigger | Research Project</title>
+<link href="{{ '/tshor/styles.css' | relative_url }}" rel="stylesheet"/>
+<script defer="" src="{{ '/tshor/script.js' | relative_url }}"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="page-width header-row">
+<a class="breadcrumb" href="{{ '/' | relative_url }}">← <span>Back to portfolio</span></a>
+<span class="header-id">TSHOR</span>
+</div>
+</header>
+<main id="main">
+<section aria-labelledby="title" class="page-width project-intro">
+<p class="eyebrow">ROBOTICS <span class="dot">·</span> HAPTIC INTERFACES <span class="dot">·</span> TELEOPERATION</p>
+<h1 id="title"><strong>TSHOR</strong>: A Cable-Driven Haptic Trigger Interface for Robotic Gripper Teleoperation</h1>
+<div class="authorship">
+<p>Tenzin Lobsang Phelgyal, Jaspreet Singh Chhabra</p>
+<p class="affiliation">Computer Vision and Robotics Group · University of Alberta</p>
+</div>
+<p class="standfirst">A compact, cable-driven interface for robotic gripper teleoperation, providing kinesthetic force feedback at the trigger.</p><figure class="feature-video"><video aria-label="TSHOR trigger demonstration" controls="" playsinline="" poster="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}" preload="metadata"><source src="{{ '/tshor/assets/video-1.mp4' | relative_url }}" type="video/mp4"/>Your browser does not support embedded video.</video><figcaption>TSHOR trigger demonstration.</figcaption></figure>
+<figure class="primary-figure">
+<div class="primary-images">
+<div class="image-surface image-hand"><img alt="Physical TSHOR prototype held in one hand" data-fallback="{{ '/tshor/assets/hand-trigger.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}"/></div>
+<div class="image-surface image-cad"><img alt="CAD model of the assembled TSHOR trigger" data-fallback="{{ '/tshor/assets/cad-overview.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/cad-overview.gif' | relative_url }}"/></div>
+</div>
+<figcaption>Handheld prototype and assembled CAD model.</figcaption>
+</figure>
+<div class="resource-links">
+<a href="{{ '/tshor/assets/poster.jpg' | relative_url }}" rel="noopener" target="_blank">Project poster <span aria-hidden="true">↗</span></a>
+<a href="#characterization">Experimental results <span aria-hidden="true">↓</span></a>
+<a href="#media">Demonstrations <span aria-hidden="true">↓</span></a>
+</div>
+</section>
+<div class="page-width research-layout">
+<aside aria-label="Contents" class="side-index">
+<div class="side-index-inner">
+<p class="side-label">CONTENTS</p>
+<nav>
+<a href="#abstract">Overview</a>
+<a href="#mechanical-design">Mechanical design</a>
+<a href="#control">Control &amp; electronics</a>
+<a href="#characterization">Characterization</a>
+<a href="#specifications">Specifications</a>
+<a href="#media">Media</a>
+<a href="#credits">Credits</a>
+</nav>
+</div>
+</aside>
+<div class="research-content">
+<section class="research-section first-section" id="abstract">
+<h2>Overview</h2>
+<p>TSHOR is a handheld haptic interface developed for robotic gripper teleoperation. The trigger provides a physical input to control the gripper, while a motor applies force feedback to the operator.</p>
+<p>The device uses a two-stage cable transmission coupled to a brushless motor. The handle also contains the controller, motor driver, and two vibration motors.</p>
+</section>
+<section class="research-section" id="mechanical-design">
+<h2>Mechanical design</h2>
+<p>The actuation system uses a two-stage cable transmission. The first stage provides a <strong>10:1 reduction</strong>, while the second is a <strong>1:1 capstan stage</strong>. A hybrid Dyneema–steel cable routing is used in the transmission.</p>
+<p>The two stages place the motor and transmission inside the handle while maintaining a compact trigger geometry. The cable drive is intended to provide good backdrivability and low backlash.</p>
+<div class="two-figures">
+<figure class="figure">
+<div class="mechanism-image"><img alt="CAD view of the first-stage 10 to 1 cable reduction" loading="lazy" src="{{ '/tshor/assets/stage-1.png' | relative_url }}"/></div>
+<figcaption> First-stage cable reduction, 10:1.</figcaption>
+</figure>
+<figure class="figure">
+<div class="mechanism-image"><img alt="CAD view of the second-stage one to one capstan" loading="lazy" src="{{ '/tshor/assets/stage-2.png' | relative_url }}"/></div>
+<figcaption> Second-stage capstan, 1:1.</figcaption>
+</figure>
+</div>
+<dl class="design-notes">
+<div><dt>Stage 1</dt><dd>10:1 cable reduction</dd></div>
+<div><dt>Stage 2</dt><dd>1:1 capstan</dd></div>
+<div><dt>Transmission</dt><dd>Hybrid Dyneema–steel cable</dd></div>
+</dl>
+</section>
+<section class="research-section" id="control">
+<h2>Control and electronics</h2>
+<p>A BLDC motor generates the trigger force through the cable transmission. The prototype uses <strong>PD control with torque feedback</strong> for kinesthetic force rendering. Separate LRA and ERM vibration motors provide an additional tactile output channel.</p>
+<figure class="figure internal-figure">
+<div class="internal-media"><img alt="Annotated photograph of internal TSHOR components, including motor, driver, controller and vibration actuators" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/internal-layout.jpg' | relative_url }}"/></div>
+<figcaption> Internal layout of the prototype, showing actuation and embedded electronics.</figcaption>
+</figure><figure class="figure architecture-figure"><div class="architecture-image"><img alt="System architecture of the TSHOR electronics and communication" loading="lazy" src="{{ '/tshor/assets/system-architecture.png' | relative_url }}"/></div><figcaption>System architecture and control connections.</figcaption></figure>
+<table aria-label="Control hardware" class="technical-table">
+<tbody>
+<tr><th scope="row">Main processor</th><td>Teensy 4.0</td></tr>
+<tr><th scope="row">Actuation</th><td>BLDC motor with motor driver</td></tr>
+<tr><th scope="row">Force feedback control</th><td>PD with torque feedback</td></tr>
+<tr><th scope="row">Vibrotactile output</th><td>LRA and ERM vibration motors</td></tr>
+<tr><th scope="row">Communication hardware</th><td>CAN transceiver</td></tr>
+<tr><th scope="row">Additional inputs</th><td>Joystick and soft-touch button</td></tr>
+</tbody>
+</table>
+</section>
+<section class="research-section" id="characterization">
+<h2>Force characterization</h2>
+<p>The force output was measured at commanded motor currents ranging from 0.25 A to 3.25 A. The maximum recorded force was <strong>18.63 N</strong>.</p>
+<figure class="figure plot-figure">
+<img alt="Plot of eleven measured force values against commanded motor current, from 0.588 newtons at 0.25 amperes to 18.633 newtons at 3.25 amperes" loading="lazy" src="{{ '/tshor/assets/force-current.svg' | relative_url }}"/>
+<figcaption> Measured force as a function of commanded motor current.</figcaption>
+</figure>
+</section>
+<section class="research-section" id="specifications">
+<h2>Technical specifications</h2>
+<p class="section-intro">Specifications of the current prototype.</p>
+<table aria-label="Reported TSHOR prototype specifications" class="technical-table spec-table">
+<tbody>
+<tr><th scope="row">Peak force output</th><td>18.6 N</td></tr>
+<tr><th scope="row">Haptic feedback update rate</th><td>360 Hz</td></tr>
+<tr><th scope="row">Trigger range of motion</th><td>52°</td></tr>
+<tr><th scope="row">Peak motor torque</th><td>≈ 0.7 N·m</td></tr>
+<tr><th scope="row">Device mass</th><td>180 g</td></tr>
+<tr><th scope="row">Overall dimensions</th><td>147 × 68 × 48 mm</td></tr>
+<tr><th scope="row">Electrical current draw (reported)</th><td>6 mA idle / 1 A peak</td></tr>
+<tr><th scope="row">Estimated manufacturing cost</th><td>≈ $380 (currency as reported)</td></tr>
+</tbody>
+</table>
+<p class="table-note">Values reported in the project poster.</p>
+</section>
+<section class="research-section" id="media">
+<h2>Photos and videos</h2>
+<p class="section-intro">Photographs and demonstration videos of the assembled prototype and its internal components.</p>
+<div class="media-figures">
+
+<figure class="figure media-figure" data-upgrade-video="" data-video-src="{{ '/tshor/assets/video-internals.mp4' | relative_url }}">
+<div class="media-stage"><img alt="Internal components of TSHOR" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/internal-layout.jpg' | relative_url }}"/></div><figcaption><span class="media-caption">Internal mechanism and electronics.</span></figcaption></figure>
+<figure class="figure media-figure"><div class="media-stage"><img alt="Photograph of the TSHOR prototype" data-fallback="{{ '/tshor/assets/hand-trigger.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/IMG_3891.jpg' | relative_url }}"/></div><figcaption>Prototype photograph.</figcaption></figure>
+<figure class="figure media-figure"><div class="media-stage"><img alt="Photograph of the internal electronics" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/IMG_3899.jpg' | relative_url }}"/></div><figcaption>Electronics and cabling inside the enclosure.</figcaption></figure>
+<figure class="figure media-figure wide-figure"><div class="media-stage media-stage-gripper"><img alt="Robotic gripper" loading="lazy" src="{{ '/tshor/assets/gripper.png' | relative_url }}"/></div><figcaption>Robotic gripper used for teleoperation.</figcaption></figure></div>
+</section>
+<section class="research-section credits-section" id="credits">
+<h2>Project information</h2>
+<p>TSHOR was developed at the Computer Vision and Robotics Group, University of Alberta, by Jaspreet Singh Chhabra, Tenzin Lobsang Phelgyal, Amin Noohian, Justin Valentine, and Martin Jagersand.</p>
+<div class="doc-link"><span>Research poster</span><a href="{{ '/tshor/assets/poster.jpg' | relative_url }}" rel="noopener" target="_blank">View poster <span aria-hidden="true">↗</span></a></div>
+</section>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="page-width footer-inner"><span>TSHOR · Computer Vision and Robotics Group · University of Alberta</span><a href="{{ '/' | relative_url }}">← Back to portfolio</a></div>
+</footer>
+</body>
+</html>
