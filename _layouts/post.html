@@ -17,6 +17,38 @@ layout: default
   {{ content }}
 </div>
 
+<!-- Automatically arrange consecutive images into grids -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const post = document.querySelector(".post");
+  if (!post) return;
+
+  let grid = null;
+
+  Array.from(post.children).forEach(element => {
+    const isImage = (
+      element.tagName === "P" &&
+      element.querySelector("img") &&
+      element.textContent.trim() === "" &&
+      element.querySelectorAll("img").length === 1 &&
+      element.children.length === 1
+    );
+
+    if (isImage) {
+      if (!grid) {
+        grid = document.createElement("div");
+        grid.className = "auto-image-grid";
+        element.before(grid);
+      }
+
+      grid.appendChild(element);
+    } else {
+      grid = null;
+    }
+  });
+});
+</script>
+
 {% if site.related_posts.size >= 1 %}
 <div class="related">
   <h2>Related posts</h2>
