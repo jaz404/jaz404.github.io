@@ -17,6 +17,46 @@ permalink: /tshor/
 <title>TSHOR — Cable-Driven Haptic Trigger | Research Project</title>
 <link href="{{ '/tshor/styles.css' | relative_url }}" rel="stylesheet"/>
 <script defer="" src="{{ '/tshor/script.js' | relative_url }}"></script>
+<style>
+/* Inline overrides so both videos work without changes to styles.css. */
+.feature-video,
+.mechanism-demo,
+.feature-video video,
+.mechanism-demo video {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.feature-video,
+.mechanism-demo {
+  padding: 0 !important;
+  overflow: visible !important;
+}
+.feature-video video,
+.mechanism-demo video {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  max-width: 100%;
+  aspect-ratio: auto !important;
+  object-fit: contain;
+  margin: 0;
+  padding: 0 !important;
+  outline: none;
+}
+.feature-video { margin: 1.5rem 0 2rem; }
+.mechanism-demo { max-width: 460px; margin: 2rem auto; }
+.feature-video figcaption,
+.mechanism-demo figcaption { margin-top: .6rem; }
+/* Keep photographs after the technical content, rather than under the hero. */
+#media .primary-figure { margin: 1.25rem 0 2rem; }
+#media .primary-images { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+#media .primary-images .image-surface { min-width: 0; }
+#media .primary-images img { display: block; width: 100%; height: auto; object-fit: contain; }
+@media (max-width: 600px) {
+  #media .primary-images { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -34,18 +74,17 @@ permalink: /tshor/
 <p>Tenzin Lobsang Phelgyal, Jaspreet Singh Chhabra</p>
 <p class="affiliation">Computer Vision and Robotics Group · University of Alberta</p>
 </div>
-<p class="standfirst">A compact, cable-driven interface for robotic gripper teleoperation, providing kinesthetic force feedback at the trigger.</p><figure class="feature-video"><video aria-label="TSHOR trigger demonstration" controls="" playsinline="" poster="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}" preload="metadata"><source src="{{ '/tshor/assets/video-1.mp4' | relative_url }}" type="video/mp4"/>Your browser does not support embedded video.</video><figcaption>TSHOR trigger demonstration.</figcaption></figure>
-<figure class="primary-figure">
-<div class="primary-images">
-<div class="image-surface image-hand"><img alt="Physical TSHOR prototype held in one hand" data-fallback="{{ '/tshor/assets/hand-trigger.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}"/></div>
-<div class="image-surface image-cad"><img alt="CAD model of the assembled TSHOR trigger" data-fallback="{{ '/tshor/assets/cad-overview.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/cad-overview.gif' | relative_url }}"/></div>
-</div>
-<figcaption>Handheld prototype and assembled CAD model.</figcaption>
+<p class="standfirst">A compact, cable-driven interface for robotic gripper teleoperation, providing kinesthetic force feedback at the trigger.</p><figure class="feature-video">
+<video aria-label="TSHOR trigger demonstration" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}" disablepictureinpicture>
+<source src="{{ '/tshor/assets/video-1.mp4' | relative_url }}" type="video/mp4"/>
+Your browser does not support embedded video.
+</video>
+<figcaption>TSHOR trigger demonstration.</figcaption>
 </figure>
 <div class="resource-links">
 <a href="{{ '/tshor/assets/poster.jpg' | relative_url }}" rel="noopener" target="_blank">Project poster <span aria-hidden="true">↗</span></a>
 <a href="#characterization">Experimental results <span aria-hidden="true">↓</span></a>
-<a href="#media">Demonstrations <span aria-hidden="true">↓</span></a>
+<a href="#media">Prototype and CAD <span aria-hidden="true">↓</span></a>
 </div>
 </section>
 <div class="page-width research-layout">
@@ -58,7 +97,7 @@ permalink: /tshor/
 <a href="#control">Control &amp; electronics</a>
 <a href="#characterization">Characterization</a>
 <a href="#specifications">Specifications</a>
-<a href="#media">Media</a>
+<a href="#media">Prototype and CAD</a>
 <a href="#credits">Credits</a>
 </nav>
 </div>
@@ -83,6 +122,13 @@ permalink: /tshor/
 <figcaption> Second-stage capstan, 1:1.</figcaption>
 </figure>
 </div>
+<figure class="figure mechanism-demo">
+<video aria-label="TSHOR internal mechanism demonstration" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="{{ '/tshor/assets/internal-layout.jpg' | relative_url }}" disablepictureinpicture>
+<source src="{{ '/tshor/assets/video-internals.mp4' | relative_url }}" type="video/mp4"/>
+Your browser does not support embedded video.
+</video>
+<figcaption>Internal mechanism and electronics.</figcaption>
+</figure>
 <dl class="design-notes">
 <div><dt>Stage 1</dt><dd>10:1 cable reduction</dd></div>
 <div><dt>Stage 2</dt><dd>1:1 capstan</dd></div>
@@ -133,12 +179,17 @@ permalink: /tshor/
 <p class="table-note">Values reported in the project poster.</p>
 </section>
 <section class="research-section" id="media">
-<h2>Photos and videos</h2>
-<p class="section-intro">Photographs and demonstration videos of the assembled prototype and its internal components.</p>
+<h2>Prototype and CAD</h2>
+<p class="section-intro">Photographs and CAD views of the assembled prototype and its internal components.</p>
+<figure class="primary-figure">
+<div class="primary-images">
+<div class="image-surface image-hand"><img alt="Physical TSHOR prototype held in one hand" data-fallback="{{ '/tshor/assets/hand-trigger.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/hand_trigger.jpg' | relative_url }}"/></div>
+<div class="image-surface image-cad"><img alt="CAD model of the assembled TSHOR trigger" data-fallback="{{ '/tshor/assets/cad-overview.png' | relative_url }}" fetchpriority="high" src="{{ '/tshor/assets/cad-overview.gif' | relative_url }}"/></div>
+</div>
+<figcaption>Handheld prototype and assembled CAD model.</figcaption>
+</figure>
 <div class="media-figures">
 
-<figure class="figure media-figure" data-upgrade-video="" data-video-src="{{ '/tshor/assets/video-internals.mp4' | relative_url }}">
-<div class="media-stage"><img alt="Internal components of TSHOR" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/internal-layout.jpg' | relative_url }}"/></div><figcaption><span class="media-caption">Internal mechanism and electronics.</span></figcaption></figure>
 <figure class="figure media-figure"><div class="media-stage"><img alt="Photograph of the TSHOR prototype" data-fallback="{{ '/tshor/assets/hand-trigger.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/IMG_3891.jpg' | relative_url }}"/></div><figcaption>Prototype photograph.</figcaption></figure>
 <figure class="figure media-figure"><div class="media-stage"><img alt="Photograph of the internal electronics" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/IMG_3899.jpg' | relative_url }}"/></div><figcaption>Electronics and cabling inside the enclosure.</figcaption></figure>
 <figure class="figure media-figure wide-figure"><div class="media-stage media-stage-gripper"><img alt="Robotic gripper" loading="lazy" src="{{ '/tshor/assets/gripper.png' | relative_url }}"/></div><figcaption>Robotic gripper used for teleoperation.</figcaption></figure></div>
@@ -154,5 +205,25 @@ permalink: /tshor/
 <footer class="site-footer">
 <div class="page-width footer-inner"><span>TSHOR · Computer Vision and Robotics Group · University of Alberta</span><a href="{{ '/' | relative_url }}">← Back to portfolio</a></div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('.feature-video video, .mechanism-demo video');
+  const start = video => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+  };
+  videos.forEach(video => {
+    video.removeAttribute('controls');
+    video.addEventListener('loadeddata', () => start(video), { once: true });
+    start(video);
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) videos.forEach(video => { if (video.paused) start(video); });
+  });
+});
+</script>
 </body>
 </html>
