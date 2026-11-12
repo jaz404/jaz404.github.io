@@ -84,6 +84,7 @@ Your browser does not support embedded video.
 <div class="resource-links">
 <a href="{{ '/tshor/assets/poster.jpg' | relative_url }}" rel="noopener" target="_blank">Project poster <span aria-hidden="true">↗</span></a>
 <a href="#characterization">Experimental results <span aria-hidden="true">↓</span></a>
+<a href="#development">Development process <span aria-hidden="true">↓</span></a>
 <a href="#media">Prototype and CAD <span aria-hidden="true">↓</span></a>
 </div>
 </section>
@@ -97,6 +98,8 @@ Your browser does not support embedded video.
 <a href="#control">Control &amp; electronics</a>
 <a href="#characterization">Characterization</a>
 <a href="#specifications">Specifications</a>
+<a href="#development">Development</a>
+<a href="#future-work">Future work</a>
 <a href="#media">Prototype and CAD</a>
 <a href="#credits">Credits</a>
 </nav>
@@ -112,6 +115,16 @@ Your browser does not support embedded video.
 <h2>Mechanical design</h2>
 <p>The actuation system uses a two-stage cable transmission. The first stage provides a <strong>10:1 reduction</strong>, while the second is a <strong>1:1 capstan stage</strong>. A hybrid Dyneema–steel cable routing is used in the transmission.</p>
 <p>The two stages place the motor and transmission inside the handle while maintaining a compact trigger geometry. The cable drive is intended to provide good backdrivability and low backlash.</p>
+<p>The first stage winds braided Dyneema (UHMWPE) line from a 4 mm drum on the motor onto a 40 mm drum, with a helical groove printed into the small drum to guide the cable. The second stage was first built with the same line, but it slowly lost tension under load, so it was moved to braided steel cable on 12.8 mm drums.</p>
+<h3 class="subhead">Sizing the cable wraps</h3>
+<p>A cable wrapped around a drum holds by friction. The capstan equation relates the tension the drum can hold to the number of turns:</p>
+<figure class="equation"><img alt="T load equals T hold times e to the power mu theta" class="eq-capstan" loading="lazy" src="{{ '/tshor/assets/eq-capstan.png' | relative_url }}"/></figure>
+<p><em>T</em><sub>load</sub> is the tension on the loaded side, <em>T</em><sub>hold</sub> the tension on the slack side, <em>μ</em> the cable–drum friction coefficient and <em>θ</em> the total wrap angle. Solving for the number of wraps gives <em>n</em> = ln(<em>T</em><sub>load</sub>/<em>T</em><sub>hold</sub>) / 2π<em>μ</em>. For the 10:1 first stage with <em>μ</em> ≈ 0.2 between Dyneema and PLA, <em>n</em> = ln 10 / (2π · 0.2) ≈ 1.83, so at least two full wraps are needed on the small drum.</p>
+<p>For the second stage, the same relation predicted that well under one wrap would be enough. In practice the cable still slipped under finger load. Several versions of the stage were built on a bench to find a wrap count and tensioning method that held (below). Version V3T, with crimped cable ends and screw-adjusted tensioners, showed very little slip.</p>
+<figure class="figure wide-photo">
+<img alt="Three versions of the second-stage capstan test bench, labelled V3T, V2T and V1T, shown from two angles" loading="lazy" src="{{ '/tshor/assets/stage2-capstan-v1t-v3t.jpg' | relative_url }}"/>
+<figcaption>Second-stage capstan test benches V1T, V2T and V3T, each with a different cable tensioning arrangement.</figcaption>
+</figure>
 <div class="two-figures">
 <figure class="figure">
 <div class="mechanism-image"><img alt="CAD view of the first-stage 10 to 1 cable reduction" loading="lazy" src="{{ '/tshor/assets/stage-1.png' | relative_url }}"/></div>
@@ -132,12 +145,15 @@ Your browser does not support embedded video.
 <dl class="design-notes">
 <div><dt>Stage 1</dt><dd>10:1 cable reduction</dd></div>
 <div><dt>Stage 2</dt><dd>1:1 capstan</dd></div>
-<div><dt>Transmission</dt><dd>Hybrid Dyneema–steel cable</dd></div>
+<div><dt>Transmission</dt><dd>Dyneema (stage 1), braided steel (stage 2)</dd></div>
 </dl>
 </section>
 <section class="research-section" id="control">
 <h2>Control and electronics</h2>
 <p>A BLDC motor generates the trigger force through the cable transmission. The prototype uses <strong>PD control with torque feedback</strong> for kinesthetic force rendering. Separate LRA and ERM vibration motors provide an additional tactile output channel.</p>
+<p>The motor current is commanded from the gripper state:</p>
+<figure class="equation"><img alt="I command equals K P times e g, plus K D times e g f dot, plus K tau times tau g" class="eq-control" loading="lazy" src="{{ '/tshor/assets/eq-control-law.png' | relative_url }}"/></figure>
+<p><em>e</em><sub>g</sub> is the position error between the trigger and the gripper, <em>ė</em><sub>g,f</sub> is the low-pass-filtered rate of that error, and <em>τ</em><sub>g</sub> is the gripper torque. The proportional and damping terms pull the trigger toward the gripper's position. The torque term adds force when the gripper meets resistance, so the operator feels the object being grasped.</p>
 <figure class="figure internal-figure">
 <div class="internal-media"><img alt="Annotated photograph of internal TSHOR components, including motor, driver, controller and vibration actuators" data-fallback="{{ '/tshor/assets/internal-layout.png' | relative_url }}" loading="lazy" src="{{ '/tshor/assets/internal-layout.jpg' | relative_url }}"/></div>
 <figcaption> Internal layout of the prototype, showing actuation and embedded electronics.</figcaption>
@@ -160,6 +176,18 @@ Your browser does not support embedded video.
 <img alt="Plot of eleven measured force values against commanded motor current, from 0.588 newtons at 0.25 amperes to 18.633 newtons at 3.25 amperes" loading="lazy" src="{{ '/tshor/assets/force-current.svg' | relative_url }}"/>
 <figcaption> Measured force as a function of commanded motor current.</figcaption>
 </figure>
+<h3 class="subhead">Feedback under contact</h3>
+<p>The trigger was then used to drive the gripper through three conditions: free motion, closing on a soft object, and closing on a rigid object.</p>
+<ul class="result-list">
+<li><strong>Free motion.</strong> The operator opened and closed the trigger between about 10% and 90%. Position error stayed close to zero, gripper torque stayed near zero, and motor current was small, so the trigger moved freely.</li>
+<li><strong>Soft contact.</strong> With the trigger fully closed on a soft object, error settled near 0.035, gripper torque near 0.35 N·m and commanded current near 0.25 A. Each time the operator eased off, all three dropped back toward zero.</li>
+<li><strong>Hard contact.</strong> On a rigid object, error rose to 0.10, gripper torque to about 0.43 N·m and commanded current to about 0.70 A. This gave a clearly stiffer response than soft contact.</li>
+</ul>
+<p>Measured current followed the commanded current in free motion. During sustained contact, it settled below the commanded value: about 0.08 A in soft contact and 0.24 A in hard contact.</p>
+<figure class="figure plot-figure">
+<img alt="Four stacked time-series plots over 30 seconds covering free motion, soft contact and hard contact: trigger closure, position error, gripper torque, and commanded versus measured motor current" loading="lazy" src="{{ '/tshor/assets/contact-conditions.png' | relative_url }}"/>
+<figcaption>(a) Trigger closure, (b) position error, (c) gripper torque and (d) commanded and measured motor current across free motion, soft contact and hard contact.</figcaption>
+</figure>
 </section>
 <section class="research-section" id="specifications">
 <h2>Technical specifications</h2>
@@ -177,6 +205,105 @@ Your browser does not support embedded video.
 </tbody>
 </table>
 <p class="table-note">Values reported in the project poster.</p>
+</section>
+<section class="research-section" id="development">
+<h2>Development process</h2>
+<p class="section-intro">TSHOR went through many printed iterations. This summary is drawn from the project's design journal and covers the main decisions and failures that shaped the current prototype.</p>
+<ol class="dev-timeline">
+
+<li class="dev-step">
+<h3>Concept and motor selection</h3>
+<p>The starting point was the lab's earlier arm-mounted haptic controller and game-controller triggers that move but give no force feedback. The goal was a handheld grip with a small capstan drive behind the trigger.</p>
+<p>The OT2206, a hollow-shaft BLDC motor with a built-in driver, was chosen because it fits in a handle (28.5 mm diameter, 20.7 mm thick). Dedicated compact motor controllers were either too expensive or larger than the space allowed. Early handles were sketched over photos of a hand on a commercial VR controller, and the first print was fitted in hand before any mechanism went inside.</p>
+<div class="dev-grid cols-2">
+<figure><img alt="First 3D-printed handle shell held in hand" loading="lazy" src="{{ '/tshor/assets/dev-01-first-handle.jpg' | relative_url }}"/><figcaption>First printed handle.</figcaption></figure>
+<figure><img alt="CAD model of the OT2206 motor with the first-stage capstan drum" loading="lazy" src="{{ '/tshor/assets/dev-02-stage1-cad.jpg' | relative_url }}"/><figcaption>OT2206 motor and first-stage capstan in CAD.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Printing the capstan drums</h3>
+<p>The small drum has a helical groove to guide the cable. The first grooves were sized for the line's nominal 0.37 mm diameter, but the braided line measured closer to 0.6 mm. A 0.65 mm groove profile was still too tight, and a 0.8 mm profile fit well.</p>
+<p>Drums and inserts were test-printed with 0.2 mm and 0.4 mm nozzles. Settings were then fixed at 0.08 mm layers with three wall loops for strength.</p>
+<div class="dev-grid cols-1">
+<figure><img alt="Printed drum with braided cable wound in its helical groove" loading="lazy" src="{{ '/tshor/assets/dev-03-drum-wound.jpg' | relative_url }}"/><figcaption>Cable seated in the 0.8 mm groove profile.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Electronics and internal layout</h3>
+<p>The first plan used an ESP32-S3. The OT2206 driver communicates over CAN, so the design moved to a Teensy 4.0 with a CJMCU-1051 CAN transceiver. The rest of the board set is a 5 V step-down regulator, a DRV2605L haptic driver, a thumb joystick, a WS2812 LED strip and an XT30 power connector.</p>
+<p>The shell was then laid out around these parts, with mounting points for magnets, M2 heat-set inserts and each board.</p>
+<div class="dev-grid cols-2">
+<figure><img alt="Early wiring plan connecting Teensy 4.0, CAN transceiver, regulator, haptic driver, joystick and motor" loading="lazy" src="{{ '/tshor/assets/dev-12-wiring-plan.jpg' | relative_url }}"/><figcaption>Early wiring plan.</figcaption></figure>
+<figure><img alt="CAD of the two shell halves with pockets for the motor, LEDs, Teensy, haptic driver, CAN transceiver and buck converter" loading="lazy" src="{{ '/tshor/assets/dev-04-shell-layout.jpg' | relative_url }}"/><figcaption>Shell halves laid out around the components.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Fitting different hands</h3>
+<p>Lab members with large, medium and small hands held the prototype and gave feedback. The main requests were softer edges, a narrower grip, and added grip texture. The largest hands left empty space in the palm, while the smallest hands found the traditional hold too wide.</p>
+<p>A strap over the knuckles was the most effective change. It lets the trigger be operated without a full grip on the handle. The strap, angled trigger and narrower profile carried into later shells.</p>
+<div class="dev-grid cols-3">
+<figure><img alt="Prototype held in a large hand" loading="lazy" src="{{ '/tshor/assets/dev-05-fit-large.jpg' | relative_url }}"/><figcaption>Large hand.</figcaption></figure>
+<figure><img alt="Prototype held in a small hand" loading="lazy" src="{{ '/tshor/assets/dev-05-fit-small.jpg' | relative_url }}"/><figcaption>Small hand.</figcaption></figure>
+<figure><img alt="Prototype held using a strap across the knuckles" loading="lazy" src="{{ '/tshor/assets/dev-05-strap.jpg' | relative_url }}"/><figcaption>Strap test.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Tensioning the second stage</h3>
+<p>The second stage links two 12 mm drums with crossed cables, so it needs a way to set and hold tension. Early benches slipped when the finger pushed back against the motor. Each version added wraps and better tensioning, using crimped cable ends and brass standoffs as screw tensioners.</p>
+<p>Benches with 5, 6 and 7 wraps were compared. V3T held with very little slip, but the tension was high enough to pull its screws inward, and reassembly inside the handle was difficult. The fix was a bracket that holds the second-stage tension on its own, so the top cover can be removed without undoing the cables.</p>
+<div class="dev-grid cols-3">
+<figure><img alt="Three trigger arms built with seven, six and five cable wraps" loading="lazy" src="{{ '/tshor/assets/dev-06-wrap-variants.jpg' | relative_url }}"/><figcaption>7, 6 and 5 wrap variants.</figcaption></figure>
+<figure><img alt="Handle internals showing the updated trigger, top bracket and tensioning system" loading="lazy" src="{{ '/tshor/assets/dev-07-bracket.jpg' | relative_url }}"/><figcaption>Top bracket and updated tensioners.</figcaption></figure>
+<figure><img alt="Side view of the handle showing the first and second capstan stages" loading="lazy" src="{{ '/tshor/assets/dev-07-stages.jpg' | relative_url }}"/><figcaption>Both stages installed.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Failures and fixes</h3>
+<p>Under load, the cable cut into the PLA driver drum and cracked it. Critical parts were reprinted in PETG, with an M2 screw added through the drum as a core. On PETG, the Dyneema line then slid under high motor force because of its low friction. Coatings to raise friction were considered. The creep that followed led to the switch to braided steel cable for the second stage.</p>
+<p>A shorted Teensy led to thinner 30–32 AWG signal wiring and a shell 2 mm wider. The extra width also made the trigger noticeably smoother, because the cables and motor no longer rubbed against the walls.</p>
+<div class="dev-grid cols-2">
+<figure><img alt="Close-up of the driver drum cracked where the cable cut into it" loading="lazy" src="{{ '/tshor/assets/dev-08-drum-failure.jpg' | relative_url }}"/><figcaption>Driver drum cracked by the cable.</figcaption></figure>
+<figure><img alt="Braided cable slipping on the PETG end drum" loading="lazy" src="{{ '/tshor/assets/dev-08-slip.jpg' | relative_url }}"/><figcaption>Cable slipping on the PETG end drum.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Shell iterations</h3>
+<p>Successive shells added a cable exit, a slimmer trigger, room for a larger vibration motor and a second CAN transceiver, and a cover held by three screws. By version T12 the trigger had a physical end stop and all main components except the buck converter were wired in.</p>
+<p>The second-stage output drum was later enlarged to 17 mm, about 1.4:1 (roughly 14:1 overall). This gives more force at the trigger, though it felt slightly stiffer at first.</p>
+<div class="dev-grid cols-3">
+<figure><img alt="Shell iteration T7 with internals" loading="lazy" src="{{ '/tshor/assets/dev-09-t7.jpg' | relative_url }}"/><figcaption>T7.</figcaption></figure>
+<figure><img alt="Shell iteration T9 with slimmer trigger" loading="lazy" src="{{ '/tshor/assets/dev-09-t9.jpg' | relative_url }}"/><figcaption>T9.</figcaption></figure>
+<figure><img alt="Shell iteration T12 fully wired with trigger end stop" loading="lazy" src="{{ '/tshor/assets/dev-09-t12.jpg' | relative_url }}"/><figcaption>T12.</figcaption></figure>
+</div>
+</li>
+
+<li class="dev-step">
+<h3>Refinement</h3>
+<p>Repeated fast moves to the end of travel made the first-stage cable jump its groove. The groove pitch was recalculated from the drum geometry: 243° of travel on the 40 mm drum gives 6.75 turns of the 4 mm drum over 8.5 mm of height, so the pitch went from 1.2 mm to 1.259 mm.</p>
+<p>The steel cable began to fray where it ran over two fixed idlers. Each idler was replaced by a PETG sleeve spinning on a 1.49 mm steel pin. Other small fixes stopped the CAN transceivers and over-tightened drum screws from rubbing on the motor housing. An LRA (sharp, detailed clicks) and an ERM (stronger, continuous rumble) were also compared, and a slot was added for the ERM.</p>
+<div class="dev-grid cols-3">
+<figure><img alt="First-stage capstan showing where the cable came off the drum" loading="lazy" src="{{ '/tshor/assets/dev-10-decabling.jpg' | relative_url }}"/><figcaption>First-stage decabling at full travel.</figcaption></figure>
+<figure><img alt="PETG idler sleeves on steel pins held between fingers" loading="lazy" src="{{ '/tshor/assets/dev-10-idler.jpg' | relative_url }}"/><figcaption>Rotating idlers on steel pins.</figcaption></figure>
+<figure><img alt="CAD of the shell with a slot for the ERM vibration motor" loading="lazy" src="{{ '/tshor/assets/dev-11-erm-slot.jpg' | relative_url }}"/><figcaption>ERM motor slot.</figcaption></figure>
+</div>
+</li>
+</ol>
+</section>
+<section class="research-section" id="future-work">
+<h2>Future work</h2>
+<ul class="result-list">
+<li><strong>Stiffer contact rendering.</strong> The trigger should feel stiffer when the gripper closes on rigid objects.</li>
+<li><strong>Lower latency</strong> between the trigger and the gripper.</li>
+<li><strong>Texture and vibration.</strong> Surface texture and vibration at the gripper could be rendered through the BLDC motor or the vibration motor.</li>
+<li><strong>Tactile sensing on the gripper.</strong> PVDF piezoelectric film could sense finger deformation on larger objects, and MEMS microphones could pick up the small vibrations of fine manipulation. Both would drive feedback at the trigger.</li>
+<li><strong>Usability additions.</strong> Planned additions are a soft-touch button to re-zero the gripper, a clutch button, a slide-in mount, and a left-handed version.</li>
+</ul>
 </section>
 <section class="research-section" id="media">
 <h2>Prototype and CAD</h2>
