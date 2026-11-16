@@ -4,9 +4,44 @@ title: 3D Printed Robotic Arm
 date: 2026-08-15
 last_updated: 2026-11-07
 image: /assets/3d-printed-arm/update-2026-11-07/compressed_1/full-3.jpg
-summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
+summary: A work in progress 3D printed 6DOF robotic arm
 ---
+<style>
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 1.5rem 0 2.5rem;
+}
 
+.project-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-gallery p {
+  margin: 0;
+}
+</style>
+
+<div class="project-gallery" markdown="1">
 ![Full Arm 4](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-4.jpg)
 
 ![Full Arm 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-2.jpg)
@@ -18,9 +53,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Gearbox](/assets/3d-printed-arm/gearbox-3.jpg)
 
 ![Rough sketch of the arm](/assets/3d-printed-arm/a-very-rough-sketch.jpg)
+</div>
 
 ## Shoulder
 
+<div class="project-gallery" markdown="1">
 ![Shoulder stage 1 - 1](/assets/3d-printed-arm/shoulder-stage1-1.jpg)
 
 ![Shoulder stage 1 - 2](/assets/3d-printed-arm/shoulder-stage1-2.jpg)
@@ -39,7 +76,6 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ![Shoulder stage 2 - 1](/assets/3d-printed-arm/shoulder-stage2-1.jpg)
 
-
 ![Shoulder side 1](/assets/3d-printed-arm/shoulder-side-1.jpg)
 
 ![Shoulder side 2, even the bearings are 3D printed!](/assets/3d-printed-arm/shoulder-side-2.jpg)
@@ -47,14 +83,17 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Shoulder 1](/assets/3d-printed-arm/shoulder-1.jpg)
 
 ![Shoulder 2](/assets/3d-printed-arm/shoulder-2.jpg)
+</div>
 
 ## Test Circuit
 
+<div class="project-gallery" markdown="1">
 ![Control board 1](/assets/3d-printed-arm/control-board-1.jpg)
 
 ![Control board 2](/assets/3d-printed-arm/control-board-2.jpg)
 
 ![Wire braiding](/assets/3d-printed-arm/my-wire-braiding-skills.jpg)
+</div>
 
 ## Shoulder Test!
 
@@ -69,6 +108,7 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 
 ## Upper Arm
 
+<div class="project-gallery" markdown="1">
 ![Upper Arm 0](/assets/3d-printed-arm/elbow-0.jpg)
 
 ![Upper Arm 1](/assets/3d-printed-arm/elbow-1.jpg)
@@ -78,9 +118,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Upper Arm 3](/assets/3d-printed-arm/elbow-3.jpg)
 
 ![Upper Arm Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/upper-arm-gif.gif)
+</div>
 
 ## Elbow
 
+<div class="project-gallery" markdown="1">
 ![Elbow 1](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-1.jpg)
 
 ![Elbow 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-2.jpg)
@@ -96,10 +138,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Elbow 6](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-6.jpg)
 
 ![Elbow 7](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-7.jpg)
-
+</div>
 
 ## Forearm
 
+<div class="project-gallery" markdown="1">
 ![Forearm 1](/assets/3d-printed-arm/update-2026-11-07/compressed_1/forearm-1.jpg)
 
 ![Forearm 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/forearm-2.jpg)
@@ -151,9 +194,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Forearm 25](/assets/3d-printed-arm/update-2026-11-07/compressed_1/forearm-25.jpg)
 
 ![Forearm 26](/assets/3d-printed-arm/update-2026-11-07/compressed_1/forearm-26.jpg)
+</div>
 
 ## Wrist
 
+<div class="project-gallery" markdown="1">
 ![Wrist 1](/assets/3d-printed-arm/update-2026-11-07/compressed_1/wrist-1.jpg)
 
 ![Wrist 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/wrist-2.jpg)
@@ -177,9 +222,11 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Wrist 11](/assets/3d-printed-arm/update-2026-11-07/compressed_1/wrist-11.jpg)
 
 ![Wrist 12](/assets/3d-printed-arm/update-2026-11-07/compressed_1/wrist-12.jpg)
+</div>
 
 ## Full Arm
 
+<div class="project-gallery" markdown="1">
 ![Full Arm 1](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-1.jpg)
 
 ![Full Arm 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-2.jpg)
@@ -187,3 +234,4 @@ summary: A work in progress 3D printed robotic arm (hopefully 7 DoF)!
 ![Full Arm 3](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-3.jpg)
 
 ![Full Arm 4](/assets/3d-printed-arm/update-2026-11-07/compressed_1/full-4.jpg)
+</div>
