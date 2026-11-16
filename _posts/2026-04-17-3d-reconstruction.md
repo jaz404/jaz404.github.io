@@ -3,6 +3,7 @@ layout: post
 title: "3D Reconstruction of Structures"
 date: 2026-04-17
 last_updated: 2026-04-17
+math: true
 image: /assets/3d-reconstruction/cover.jpg
 summary: A pipeline that turns a phone video of a building into a navigable 3D scene with SIFT + CLAHE, KD-Tree window matching, COLMAP SfM, MVS and Gaussian Splatting!
 ---
@@ -73,9 +74,9 @@ Everything was recorded at 1080p / 30 FPS on a Samsung Galaxy S25 with **exposur
 
 SIFT finds keypoints as extrema of the Difference of Gaussians in scale space, which makes the descriptors scale and rotation invariant:
 
-```
-D(x, y, σ) = L(x, y, kσ) − L(x, y, σ)
-```
+$$
+D(x, y, \sigma) = L(x, y, k\sigma) - L(x, y, \sigma)
+$$
 
 Default SIFT did badly on the CSC dataset. The large, low-texture brick walls just didn't produce enough keypoints to constrain the matching and triangulation.
 
@@ -86,10 +87,6 @@ Lowering `contrastThreshold` and adjusting `edgeThreshold` roughly **doubled** t
 ![SIFT with edge + lower contrast thresholds](/assets/3d-reconstruction/sift-edge-contrast.jpg)
 
 What actually worked was **CLAHE** (Contrast Limited Adaptive Histogram Equalization) as a preprocessing step. It boosts local contrast, so regions that looked flat suddenly have texture. That gave about **10×** more keypoints than default SIFT, spread evenly across the brick walls instead of piled up on the edges.
-
-![Histogram before CLAHE](/assets/3d-reconstruction/clahe-before.png)
-
-![Histogram after CLAHE](/assets/3d-reconstruction/clahe-after.png)
 
 ![SIFT keypoints with CLAHE + blur + edge](/assets/3d-reconstruction/sift-clahe.jpg)
 
@@ -104,7 +101,7 @@ What actually worked was **CLAHE** (Contrast Limited Adaptive Histogram Equaliza
 Bad matches are filtered in two stages:
 
 - **Lowe's ratio test** compares the distances to the nearest and second-nearest descriptors and throws out ambiguous matches from repetitive or low-texture regions.
-- **RANSAC** fits a geometric model between the two frames (the epipolar constraint `x'ᵀ F x = 0`) and drops everything that doesn't agree with it.
+- **RANSAC** fits a geometric model between the two frames (the epipolar constraint $$x'^\top F x = 0$$) and drops everything that doesn't agree with it.
 
 ![Raw SIFT matches (~2,500)](/assets/3d-reconstruction/matches-sift.png)
 
@@ -114,25 +111,21 @@ Bad matches are filtered in two stages:
 
 We started with a **sequential brute-force matcher** where frame *t* is only matched with *t + 1*. It was really fragile: one occlusion, a bit of motion blur or a few lost features and the track chain breaks, which again gave fragmented point clouds of the CSC.
 
-So we switched to a **temporal window matcher**: every frame is matched against all frames within *t ± N* (15 by default). That builds a redundant web of correspondences, so tracks survive even when a feature disappears for a few frames, which mattered a lot with the trees in front of the CSC. Window matching is much more expensive, so the SIFT descriptors are indexed in a **KD-Tree** for approximate nearest neighbour search in the 128-D descriptor space. That brings the cost down from about O(N²) to O(N log N).
-
-```
-Sequential Brute-Force  →  Temporal Window Matcher  →  KD-Tree Acceleration
-```
+So we switched to a **temporal window matcher**: every frame is matched against all frames within *t ± N* (15 by default). That builds a redundant web of correspondences, so tracks survive even when a feature disappears for a few frames, which mattered a lot with the trees in front of the CSC. Window matching is much more expensive, so the SIFT descriptors are indexed in a **KD-Tree** for approximate nearest neighbour search in the 128-D descriptor space. That brings the cost down from about $$O(N^2)$$ to $$O(N \log N)$$.
 
 ## Sparse Reconstruction
 
 Because we use our own KD-Tree matcher, we had to skip COLMAP's built-in feature extraction and matching. Instead, a script injects our keypoints and verified matches straight into **COLMAP's SQLite database**. That database then seeds COLMAP's **incremental mapper**, which picks an initial image pair, registers new images with PnP, triangulates points and runs bundle adjustment to minimize the reprojection error:
 
-```
-min_X  Σᵢ ‖ xᵢ − π(Pᵢ X) ‖²
-```
+$$
+\min_{X} \sum_{i} \left\lVert x_i - \pi(P_i X) \right\rVert^2
+$$
 
 ![Sparse reconstruction of the CSC; the red line is the camera path recovered by COLMAP](/assets/3d-reconstruction/sparse-camera-path.png)
 
 ### Radial Distortion
 
-The biggest headache was the ultra-wide lens. At first the reconstructed building physically **bowed inward**. To fix it, we initialized bundle adjustment with COLMAP's `OPENCV` camera model, which makes the solver estimate the radial distortion coefficients (k₁, k₂). Once those are optimized, the images are unwarped into a strict `PINHOLE` projection, and the building's corners snap back to 90°.
+The biggest headache was the ultra-wide lens. At first the reconstructed building physically **bowed inward**. To fix it, we initialized bundle adjustment with COLMAP's `OPENCV` camera model, which makes the solver estimate the radial distortion coefficients ($$k_1, k_2$$). Once those are optimized, the images are unwarped into a strict `PINHOLE` projection, and the building's corners snap back to 90°.
 
 ![Without radial distortion correction: the walls bow inward](/assets/3d-reconstruction/radial-before.png)
 
@@ -158,9 +151,11 @@ Triangulation naturally creates floating junk in unconstrained areas like the op
 
 To go from the sparse model to a dense one, we used COLMAP's **PatchMatch MVS**. It estimates a depth map for every image by propagating depth guesses between neighbouring pixels and keeping the ones that are photometrically consistent across views:
 
-```
-min_d  Σᵢ,ⱼ ‖ Iᵢ(x) − Iⱼ(x') ‖²        (x' = x projected at depth d into view j)
-```
+$$
+\min_{d} \sum_{i,j} \left\lVert I_i(x) - I_j(x') \right\rVert^2
+$$
+
+where $$x'$$ is $$x$$ projected at depth $$d$$ into view $$j$$.
 
 The depth maps are then fused into a single dense point cloud, with far more points and much better surface coverage than the sparse model.
 
@@ -176,11 +171,11 @@ We also tried turning the dense cloud into a surface with **Poisson surface reco
 
 ### Gaussian Splatting
 
-The real goal was a photorealistic scene with **3D Gaussian Splatting (3DGS)**. The scene is represented by a cloud of anisotropic 3D Gaussians, each with a mean μ, covariance Σ (scale + orientation), colour c and opacity α, and it's rendered by alpha compositing:
+The real goal was a photorealistic scene with **3D Gaussian Splatting (3DGS)**. The scene is represented by a cloud of anisotropic 3D Gaussians, each with a mean $$\mu$$, covariance $$\Sigma$$ (scale + orientation), colour $$c$$ and opacity $$\alpha$$, and it's rendered by alpha compositing:
 
-```
-C = Σᵢ wᵢ cᵢ ,   wᵢ = αᵢ · Πⱼ<ᵢ (1 − αⱼ)
-```
+$$
+C = \sum_{i} w_i \, c_i, \qquad w_i = \alpha_i \prod_{j<i} \left(1 - \alpha_j\right)
+$$
 
 If 3DGS is initialized with noisy geometry, it tries to explain the empty background (like the sky) by hallucinating huge fuzzy Gaussians: the **"floater problem"**.
 
