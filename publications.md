@@ -8,9 +8,9 @@ title: Publications
   <li class="publication">
     <div class="publication-title"><a href="{{ '/tshor/' | relative_url }}">TSHOR: A Cable-Driven Haptic Trigger Interface for Robotic Gripper Teleoperation</a></div>
     <div class="publication-authors">
-      <span class="me">Jaspreet Singh Chhabra</span>, Amirhossein Noohian, Tenzin Lobsang Phelgyal, Justin Valentine, Martin Jagersand
+      <span class="me">Jaspreet Singh Chhabra</span>, Tenzin Lobsang Phelgyal, Amirhossein Noohian, Justin Valentine, Martin Jagersand
     </div>
-    <div class="publication-venue"><a href="https://conference.albertarobotics.ca/">Robotics &amp; Intelligent Systems Expo (RISEx)</a>, Edmonton, 2026</div>
+    <div class="publication-venue">Robotics &amp; Intelligent Systems Expo (RISEx), Edmonton, 2026</div>
   </li>
 
   <li class="publication">
