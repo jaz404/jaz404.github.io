@@ -277,12 +277,4 @@ Beyond the baseline SfM pipeline, we hit all of our extended goals: dense recons
   </iframe>
 </div>
 
-## Lessons Learned
-
-- **Lens choice matters.** The ultra-wide lens gets the whole building in frame but adds heavy radial distortion, which has to be modelled (`OPENCV` camera model) and corrected.
-- **Lock the camera.** Auto exposure, autofocus and motion blur all cause feature drift.
-- **Shoot landscape.** Portrait capture clips the scene at the edges and breaks the tracks.
-- **Pick the COLMAP camera model on purpose.** It decides whether the distortion gets estimated at all.
-- **Free GPUs are the bottleneck.** Colab and Kaggle work, but for full-resolution Gaussian Splatting a cloud VM with 24 GB+ of VRAM would save a lot of hassle.
-
 Huge thanks to Prof. Martin Jagersand and our TAs Riley Zilka and Cole Dewis for their support and guidance.
