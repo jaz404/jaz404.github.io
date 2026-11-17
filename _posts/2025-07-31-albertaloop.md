@@ -75,8 +75,6 @@ Before writing any subsystem code, I brought up the bxCAN peripheral on the Nucl
 2. **Loopback IT:** the same, but interrupt driven (TX mailbox empty and RX FIFO pending callbacks).
 3. **Normal mode, 2 nodes:** two Nucleos on a real bus through transceivers.
 
-![Loopback mode wiring with a transceiver](/assets/albertaloop/can-loopback-diagram.png)
-
 ![Loopback mode test setup](/assets/albertaloop/can-loopback-breadboard.jpg)
 
 In loopback mode, the frame shows up on the logic analyzer, which decodes the identifier, data bytes and CRC:
@@ -84,8 +82,6 @@ In loopback mode, the frame shows up on the logic analyzer, which decodes the id
 ![Loopback frame on the logic analyzer](/assets/albertaloop/can-loopback-logic-analyzer.png)
 
 In the two-node test, node 1 sends a **data frame** (`0x65D`) with an LED number every second, and node 2 lights up the matching LED. Every 4 seconds node 1 also sends a **remote frame** (RTR, `0x651`) asking for 2 bytes, and node 2 answers with a data frame containing `0xABCD`. Everything is interrupt driven, and both sides log over UART.
-
-![CAN normal mode, 2 node test setup](/assets/albertaloop/can-normal-mode-2-nodes.png)
 
 ```c
 if (RxHeader.StdId == 0x65D && RxHeader.RTR == 0) {
