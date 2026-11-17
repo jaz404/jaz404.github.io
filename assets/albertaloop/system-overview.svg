@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <style>
+      text { font-family: Inter, sans-serif; fill: #111827; }
+      .title { font-size: 17px; font-weight: 600; }
+      .sub   { font-size: 13px; fill: #4b5563; }
+      .mono  { font-family: 'DejaVu Sans Mono', monospace; font-size: 12.5px; fill: #374151; }
+      .edge  { font-size: 12px; fill: #6b7280; }
+      .box   { fill: #ffffff; stroke: #111827; stroke-width: 1.4; }
+      .out   { fill: #f3f4f6; stroke: #6b7280; stroke-width: 1.2; }
+      .wire  { stroke: #111827; stroke-width: 1.4; fill: none; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="720" fill="#ffffff"/>
+
+  <!-- Controller -->
+  <rect class="box" x="440" y="30" width="320" height="76"/>
+  <text class="title" x="600" y="61" text-anchor="middle">Controller</text>
+  <text class="sub" x="600" y="84" text-anchor="middle">Raspberry Pi + SX1276 LoRa, operator GUI</text>
+
+  <!-- LoRa link -->
+  <line class="wire" x1="600" y1="106" x2="600" y2="206" stroke-dasharray="6 5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text class="edge" x="612" y="160">LoRa</text>
+
+  <!-- Pod boundary -->
+  <rect x="40" y="180" width="1120" height="510" fill="none" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="5 5"/>
+  <text class="edge" x="56" y="200">POD</text>
+
+  <!-- MCU -->
+  <rect class="box" x="420" y="208" width="360" height="76"/>
+  <text class="title" x="600" y="239" text-anchor="middle">Main Control Unit</text>
+  <text class="sub" x="600" y="262" text-anchor="middle">Raspberry Pi, pod FSM, SocketCAN (can0)</text>
+
+  <!-- MCU to bus -->
+  <line class="wire" x1="600" y1="284" x2="600" y2="350"/>
+
+  <!-- CAN bus -->
+  <line x1="110" y1="350" x2="1090" y2="350" stroke="#111827" stroke-width="3"/>
+  <line x1="110" y1="342" x2="110" y2="358" stroke="#111827" stroke-width="3"/>
+  <line x1="1090" y1="342" x2="1090" y2="358" stroke="#111827" stroke-width="3"/>
+  <text class="edge" x="1090" y="336" text-anchor="end">CAN bus, 250 kbps</text>
+  <g fill="#111827">
+    <circle cx="600" cy="350" r="4"/>
+    <circle cx="235" cy="350" r="4"/>
+    <circle cx="965" cy="350" r="4"/>
+  </g>
+
+  <!-- Bus to nodes -->
+  <line class="wire" x1="235" y1="350" x2="235" y2="420"/>
+  <line class="wire" x1="600" y1="350" x2="600" y2="420"/>
+  <line class="wire" x1="965" y1="350" x2="965" y2="420"/>
+
+  <!-- Nodes -->
+  <rect class="box" x="100" y="420" width="270" height="110"/>
+  <text class="title" x="235" y="452" text-anchor="middle">Brakes Controller</text>
+  <text class="sub"  x="235" y="474" text-anchor="middle">STM32 Nucleo-F446RE</text>
+  <text class="mono" x="235" y="508" text-anchor="middle">IDs 0x200–0x2FF · HB 0x299</text>
+
+  <rect class="box" x="465" y="420" width="270" height="110"/>
+  <text class="title" x="600" y="452" text-anchor="middle">Motor Driver</text>
+  <text class="sub"  x="600" y="474" text-anchor="middle">STM32 Nucleo-F446RE</text>
+  <text class="mono" x="600" y="508" text-anchor="middle">IDs 0x300–0x3FF · HB 0x399</text>
+
+  <rect class="box" x="830" y="420" width="270" height="110"/>
+  <text class="title" x="965" y="452" text-anchor="middle">LED Controller</text>
+  <text class="sub"  x="965" y="474" text-anchor="middle">STM32 Nucleo-F446RE</text>
+  <text class="mono" x="965" y="508" text-anchor="middle">IDs 0x400–0x4FF · HB 0x499</text>
+
+  <!-- Node to output -->
+  <line class="wire" x1="235" y1="530" x2="235" y2="606" marker-end="url(#a)"/>
+  <line class="wire" x1="600" y1="530" x2="600" y2="606" marker-end="url(#a)"/>
+  <line class="wire" x1="965" y1="530" x2="965" y2="606" marker-end="url(#a)"/>
+  <text class="edge" x="245" y="573">GPIO</text>
+  <text class="edge" x="610" y="573">DAC + reverse</text>
+  <text class="edge" x="975" y="573">PWM + DMA</text>
+
+  <!-- Outputs -->
+  <rect class="out" x="135" y="608" width="200" height="50"/>
+  <text x="235" y="638" text-anchor="middle" font-size="14">Brake solenoids</text>
+  <rect class="out" x="500" y="608" width="200" height="50"/>
+  <text x="600" y="638" text-anchor="middle" font-size="14">Motor controller</text>
+  <rect class="out" x="865" y="608" width="200" height="50"/>
+  <text x="965" y="638" text-anchor="middle" font-size="14">WS2812B LED strips</text>
+</svg>
