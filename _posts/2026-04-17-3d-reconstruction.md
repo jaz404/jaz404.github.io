@@ -5,18 +5,13 @@ date: 2026-04-17
 last_updated: 2026-04-17
 math: true
 image: /assets/3d-reconstruction/cover.jpg
+video: /assets/3d-reconstruction/csc-splat.mp4
 summary: A pipeline that turns a phone video of a building into a navigable 3D scene with SIFT + CLAHE, KD-Tree window matching, COLMAP SfM, MVS and Gaussian Splatting!
 ---
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/1I2B6WT_lsaUmCVTAMeIFX4xdhvlny6QG/preview"
-    title="Gaussian Splat of the Computing Science Centre"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="Gaussian Splat of the Computing Science Centre" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/csc-splat.mp4" type="video/mp4">
+</video>
 
 ![Dense reconstruction of the Computing Science Centre, University of Alberta](/assets/3d-reconstruction/cover.jpg)
 
@@ -135,15 +130,9 @@ The biggest headache was the ultra-wide lens. At first the reconstructed buildin
 
 Triangulation naturally creates floating junk in unconstrained areas like the open sky. We run **Statistical Outlier Removal (SOR)** and **DBSCAN** clustering directly on COLMAP's `.bin` files to isolate the building and remove the disconnected noise. This removed 2.1% of the points and brought the mean reprojection error down from **0.426 px to 0.421 px**. It also matters a lot for Gaussian Splatting later, since any background noise left in turns into huge floating artifacts.
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/1bf8ZqmgHytKz5NblUpxjNoy-TSh8CplM/preview"
-    title="Point cloud before and after SOR + DBSCAN cleanup"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="Point cloud before and after SOR + DBSCAN cleanup" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/pointcloud-cleanup.mp4" type="video/mp4">
+</video>
 
 ## Densification
 
@@ -193,15 +182,9 @@ Starting from our **cleaned** sparse cloud constrains the optimization from the 
 
 ![Toy house dataset 3](/assets/3d-reconstruction/toy-house-3.jpg)
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/1cihLySnEHKh1uLSe9tpc0Eubn_CAw8TH/preview"
-    title="Toy house Gaussian Splat"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="Toy house Gaussian Splat" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/toy-house-splat.mp4" type="video/mp4">
+</video>
 
 ![Gaussian Splat result for the toy house](/assets/3d-reconstruction/splat-toy-house.png)
 
@@ -213,15 +196,9 @@ Starting from our **cleaned** sparse cloud constrains the optimization from the 
 
 ![Jet engine dataset 3](/assets/3d-reconstruction/jet-engine-3.jpg)
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/1bTyYisjR8HIQmuDMQ3hQL2Evo4MwMgPe/preview"
-    title="Jet engine Gaussian Splat"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="Jet engine Gaussian Splat" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/jet-engine-splat.mp4" type="video/mp4">
+</video>
 
 ![Gaussian Splat result for the jet engine](/assets/3d-reconstruction/splat-jet-engine.png)
 
@@ -233,15 +210,9 @@ Starting from our **cleaned** sparse cloud constrains the optimization from the 
 
 ![CSC dataset 3](/assets/3d-reconstruction/csc-3.jpg)
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/1I2B6WT_lsaUmCVTAMeIFX4xdhvlny6QG/preview"
-    title="CSC Gaussian Splat"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="CSC Gaussian Splat" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/csc-splat.mp4" type="video/mp4">
+</video>
 
 ![Gaussian Splat result for the CSC](/assets/3d-reconstruction/splat-csc.png)
 
@@ -267,14 +238,8 @@ The reconstructions keep the geometry consistent: right angles stay right angles
 
 Beyond the baseline SfM pipeline, we hit all of our extended goals: dense reconstruction with MVS, Poisson surface reconstruction, and a comparison of feature extraction strategies.
 
-<div class="video-wrap">
-  <iframe
-    src="https://drive.google.com/file/d/18KPc1lc0AufdZZWbH_jfEqig_viF45U-/preview"
-    title="Reconstruction fly-through"
-    frameborder="0"
-    allow="autoplay"
-    allowfullscreen>
-  </iframe>
-</div>
+<video autoplay loop muted playsinline aria-label="Reconstruction fly-through" style="width:100%; height:auto;">
+  <source src="/assets/3d-reconstruction/flythrough.mp4" type="video/mp4">
+</video>
 
 Huge thanks to Prof. Martin Jagersand and our TAs Riley Zilka and Cole Dewis for their support and guidance.
