@@ -14,7 +14,8 @@ summary: A work in progress 3D printed 6DOF robotic arm
   margin: 1.5rem 0 2.5rem;
 }
 
-.project-gallery img {
+.project-gallery img,
+.project-gallery video {
   width: 100%;
   height: auto;
   display: block;
@@ -117,7 +118,7 @@ summary: A work in progress 3D printed 6DOF robotic arm
 
 ![Upper Arm 3](/assets/3d-printed-arm/elbow-3.jpg)
 
-![Upper Arm Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/upper-arm-gif.gif)
+<video src="/assets/3d-printed-arm/update-2026-11-07/compressed_1/upper-arm.mp4" autoplay loop muted playsinline preload="auto" aria-label="Upper Arm Demo"></video>
 </div>
 
 ## Elbow
@@ -127,7 +128,7 @@ summary: A work in progress 3D printed 6DOF robotic arm
 
 ![Elbow 2](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-2.jpg)
 
-![Elbow Demo](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-gif.gif)
+<video src="/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow.mp4" autoplay loop muted playsinline preload="auto" aria-label="Elbow Demo"></video>
 
 ![Elbow 3](/assets/3d-printed-arm/update-2026-11-07/compressed_1/elbow-3.jpg)
 
