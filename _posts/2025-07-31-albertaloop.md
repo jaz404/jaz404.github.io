@@ -3,15 +3,12 @@ layout: post
 title: "Albertaloop: Pod Subsystem PCBs and Firmware"
 date: 2025-07-31
 last_updated: 2025-07-31
+math: true
 image: /assets/albertaloop/cover.jpg
 summary: CAN bus firmware and custom PCBs for the brakes, motor driver and LED subsystems of Albertaloop's hyperloop pod, all running on STM32 Nucleo boards!
 ---
 
 ![All the boards assembled](/assets/albertaloop/all-boards.jpg)
-
-![LED controller FSM states](/assets/albertaloop/led-controller-fsm-states.gif)
-
-![Pi to Nucleo CAN test](/assets/albertaloop/can-pi-to-nucleo.gif)
 
 [Albertaloop](http://albertaloop.ca/) is the University of Alberta's hyperloop team. For the 2025–2026 pod I wrote the firmware and designed the PCBs for the subsystem nodes: the **brakes controller**, the **motor driver** and the **LED controller**. Each one is an STM32 Nucleo-F446RE on a custom carrier board, and they all talk to the pod's main computer over a CAN bus.
 
@@ -70,8 +67,6 @@ Eight level-shifted PWM outputs through a TXS0108 logic level shifter (3.3 V →
 
 A CAN splitter board distributes the bus to every node over RJ45, and a breakout board connects the Raspberry Pi used as the Main Control Unit / controller.
 
-![All the boards assembled](/assets/albertaloop/all-boards.jpg)
-
 ## Bringing Up CAN
 
 Before writing any subsystem code, I brought up the bxCAN peripheral on the Nucleo-F446RE step by step. That work lives in the CANdrivers branch, which has three test projects:
@@ -102,8 +97,6 @@ if (RxHeader.StdId == 0x65D && RxHeader.RTR == 0) {
 }
 ```
 
-![CAN communication between 2 Nucleo nodes](/assets/albertaloop/can-2-node-test.gif)
-
 ## CAN Message Protocol
 
 Every node uses the same CAN setup: standard 11-bit IDs, interrupts on TX mailbox empty, RX FIFO 0 pending and bus-off, and a basic timer that sends the heartbeat. Each subsystem owns a block of 256 IDs:
@@ -114,15 +107,13 @@ $$
 \textbf{Node} & \textbf{ID Range} & \textbf{Heartbeat} & \textbf{Payload} \\
 \hline
 \text{Brakes} & \texttt{0x200–0x2FF} & \texttt{0x299} & \text{brake state (engaged / released)} \\
-\text{Motor Driver} & \texttt{0x300–0x3FF} & \texttt{0x399} & \texttt{crawl_mode},\ \texttt{motor_speed}\text{ (0–100, 255 = reverse)} \\
+\text{Motor Driver} & \texttt{0x300–0x3FF} & \texttt{0x399} & \texttt{crawl\_mode},\ \texttt{motor\_speed}\text{ (0–100, 255 = reverse)} \\
 \text{LED Controller} & \texttt{0x400–0x4FF} & \texttt{0x499} & \text{current FSM state} \\
 \hline
 \end{array}
 $$
 
-The pod side is plain SocketCAN, so a node can be tested from the Pi's terminal with `cansend`, and `candump` shows every heartbeat:
-
-![Raspberry Pi sending commands and listening to heartbeats](/assets/albertaloop/pi-listening-can.gif)
+The pod side is plain SocketCAN, so a node can be tested from the Pi's terminal with `cansend`, and `candump` shows every heartbeat.
 
 ## Brakes Controller Firmware
 
@@ -183,9 +174,7 @@ else if (RxHeader.StdId == 0x304 && RxHeader.RTR == 0)
 }
 ```
 
-Any of the fixed speed commands drops the node out of crawl mode. In crawl mode, the main loop toggles the direction line every second for the demo. The `0x399` heartbeat reports the crawl flag and the current speed, and everything is also logged over UART for debugging. I checked the DAC output with a multimeter at each step (0, 10, 30, 50, 70 and 100%):
-
-![DAC output test on the Nucleo](/assets/albertaloop/motor-driver-dac-test.gif)
+Any of the fixed speed commands drops the node out of crawl mode. In crawl mode, the main loop toggles the direction line every second for the demo. The `0x399` heartbeat reports the crawl flag and the current speed, and everything is also logged over UART for debugging. I checked the DAC output with a multimeter at each step (0, 10, 30, 50, 70 and 100%).
 
 ## LED Controller Firmware
 
@@ -223,11 +212,7 @@ $$
 \end{array}
 $$
 
-![LED controller cycling through FSM states 0–6](/assets/albertaloop/led-controller-fsm-states.gif)
-
 ## Integration
 
 With all the nodes flashed, the full chain works end to end: the Pi sends commands over the bus and the subsystems react and report back with heartbeats.
-
-![CAN test from the Raspberry Pi to the Nucleo nodes](/assets/albertaloop/can-pi-to-nucleo.gif)
 
